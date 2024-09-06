@@ -1,0 +1,47 @@
+[
+ {
+  "id": 1,
+  "title:": "Complete Go project",
+  "status:": "pending",
+  "priority:": "high",
+  "due_date:": "2024-09-13",
+  "create_date:": "2024-09-06",
+  "notes:": "Finish the Go task manager project"
+ },
+ {
+  "id": 2,
+  "title:": "Buy groceries",
+  "status:": "pending",
+  "priority:": "medium",
+  "due_date:": "2024-09-13",
+  "create_date:": "2024-09-06",
+  "notes:": "Pick up essentials like fruits, vegetables, and milk"
+ },
+ {
+  "id": 3,
+  "title:": "Plan weekend trip",
+  "status:": "pending",
+  "priority:": "low",
+  "due_date:": "2024-09-13",
+  "create_date:": "2024-09-06",
+  "notes:": "Research places and activities for the weekend getaway"
+ },
+ {
+  "id": 4,
+  "title:": "Prepare presentation",
+  "status:": "pending",
+  "priority:": "high",
+  "due_date:": "2024-09-13",
+  "create_date:": "2024-09-06",
+  "notes:": "Create slides for the upcoming project meeting"
+ },
+ {
+  "id": 5,
+  "title:": "Read a book",
+  "status:": "pending",
+  "priority:": "low",
+  "due_date:": "2024-09-12",
+  "create_date:": "2024-09-06",
+  "notes:": "Start reading 'Atomic Habits' by James Clear"
+ }
+]
