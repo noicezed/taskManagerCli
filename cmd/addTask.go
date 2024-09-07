@@ -84,6 +84,15 @@ type Task struct {
 }
 
 var taskFile = "task.json"
+func getNextID(tasks []Task) int {
+	maxID := 0
+	for _, task := range tasks {
+		if task.ID > maxID {
+			maxID = task.ID
+		}
+	}
+	return maxID + 1
+}
 
 func ReadTask() ([]Task, error) {
 	var tasks []Task
@@ -135,7 +144,7 @@ func addTask(title, priority, dueDate, note string) (error){
 
 
 	//  Auto Generate id
-	id := len(tasks) + 1
+	id := getNextID(tasks)
 	createDate := time.Now().Format("2006-01-02")
 
 
