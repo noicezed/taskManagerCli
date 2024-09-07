@@ -70,4 +70,5 @@ func deleteTask(id int){
         return
     }
 	fmt.Println("Task with ID: %d deleted successfully", id)
+	return
 }
