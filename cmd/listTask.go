@@ -12,7 +12,7 @@ var all bool // declare the flag
 
 // listTaskCmd represents the listTask command
 var listTaskCmd = &cobra.Command{
-	Use:   "listTask",
+	Use:   "list",
 	Short: "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
@@ -37,16 +37,6 @@ func init() {
 	rootCmd.AddCommand(listTaskCmd)
 	// listTaskCmd.PersistentFlags().String("all","","List all tasks in the cluster and their associated tasks")
 	listTaskCmd.Flags().BoolVarP(&all, "all", "a", true, "default: flase.")
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// listTaskCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// listTaskCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 func listTask()([]Task){
@@ -55,6 +45,5 @@ func listTask()([]Task){
 	if err != nil {
 		return nil
 	}
-
 	return tasks
 }

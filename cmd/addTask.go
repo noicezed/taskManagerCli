@@ -14,7 +14,7 @@ import (
 
 // addTaskCmd represents the addTask command
 var addTaskCmd = &cobra.Command{
-	Use:   "addTask",
+	Use:   "add",
 	Short: "A brief description of your command",
 	Long: `The 'add' command allows you to create a new task and add it to your task list.
 Each task can have a title, due date, and priority to help you organize and manage your work efficiently.
@@ -32,7 +32,6 @@ Examples:
 
 Make task management simple and efficient with Task Manager CLI!`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("addTask called")
 		title := cmd.Flag("title").Value.String()
 		priority := cmd.Flag("priority").Value.String()
 		dueDate := cmd.Flag("due").Value.String()
@@ -60,17 +59,6 @@ func init() {
 	addTaskCmd.PersistentFlags().String("due", "", "Set a due date for the task (format: YYYY-MM-DD)")
 	addTaskCmd.PersistentFlags().String("priority", "", "Specify the task's priority(low, medium, high)")
 	addTaskCmd.PersistentFlags().String("notes", "", "Specify additional notes about the task")
-
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// addTaskCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// addTaskCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 type Task struct {
@@ -107,13 +95,11 @@ func ReadTask() ([]Task, error) {
 	if err!= nil {
         return nil, fmt.Errorf("failed to reading task.json: %v", err)
     }
-
 	// Unmarshal JSON data to struct
 	err = json.Unmarshal(data, &tasks)
 	if err!= nil {
         return nil, fmt.Errorf("failed to read the task file - %v", err)
     }
-
 	return tasks, nil
 }
 
@@ -124,13 +110,11 @@ func WriteTask(tasks []Task) error {
 	if err!= nil {
         return fmt.Errorf("error marshalling tasks to JSON: %v", err)
     }
-
     // Write JSON data to task.json
 	err = os.WriteFile(taskFile, data, 0644)
 	if err!= nil {
         return fmt.Errorf("error writing task.json: %v", err)
     }
-
 	return nil
 }
 
@@ -141,13 +125,9 @@ func addTask(title, priority, dueDate, note string) (error){
 	if err!= nil {
         return err
     }
-
-
 	//  Auto Generate id
 	id := getNextID(tasks)
 	createDate := time.Now().Format("2006-01-02")
-
-
 	newTask := Task{
 		ID: id,
 		Title: title,
@@ -157,15 +137,12 @@ func addTask(title, priority, dueDate, note string) (error){
         CreateDate: createDate,
 		Notes: note,
 	}
-
 	tasks = append(tasks, newTask)
-
 	//  Write task file
 	err = WriteTask(tasks)
 	if err!= nil {
         return err
     }
-
     fmt.Printf("Task added successfully: %s\n", newTask.Title)
 	return nil
 }

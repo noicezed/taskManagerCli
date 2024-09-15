@@ -12,7 +12,7 @@ import (
 
 // updateTaskCmd represents the updateTask command
 var updateTaskCmd = &cobra.Command{
-	Use:   "updateTask",
+	Use:   "update",
 	Short: "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
@@ -57,18 +57,6 @@ func init() {
 	updateTaskCmd.PersistentFlags().String("id", "", "The name or description of the task")
 	updateTaskCmd.PersistentFlags().String("field", "", "Set a due date for the task (format: YYYY-MM-DD)")
 	updateTaskCmd.PersistentFlags().String("new", "", "Specify the task's priority(low, medium, high)")
-
-	
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// updateTaskCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// updateTaskCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 func updateTask(tasks []Task, id int, field string, newValue string) bool {

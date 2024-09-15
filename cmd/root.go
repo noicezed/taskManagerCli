@@ -6,6 +6,7 @@ package cmd
 
 import (
 	"os"
+	"fmt"
 	"github.com/spf13/cobra"
 )
 
@@ -42,6 +43,12 @@ func Execute() {
 	if err != nil {
 		os.Exit(1)
 	}
+	if all{
+		tasks := listTask()
+		for _, task := range tasks {
+			fmt.Printf("Task ID: %v, Title: %s, Priority: %s, Notes: %s, Due Dates: %s, Status: %s\n", task.ID, task.Title, task.Priority, task.Notes, task.DueDate, task.Status)
+		}
+	}
 }
 
 
@@ -55,6 +62,6 @@ func init() {
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
